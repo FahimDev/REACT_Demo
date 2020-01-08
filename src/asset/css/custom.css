@@ -17,3 +17,36 @@
     margin-top: 10rem;
     text-align: center;
 }
+.topTitle{
+    font-family: 'Montserreat' , sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+.topSubtitle{
+    font-family: 'Raleway' , sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+}
+.serviceTitle{
+    font-family: 'Raleway' , sans-serif;
+    font-size: 40px;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    font-weight: 600;
+}
+.serviceSlot{
+    margin: 5px 5px 5px 5px;
+    box-shadow: 0 0 8px 0 rgba(255,153,204,0.6);
+    font-family: 'Montserreat' , sans-serif;
+    font-size: 14px;
+    color: #4e555b;
+    padding: 40px 10px 10px 10px ;
+    height: 25rem;
+}
+
+.serviceSlot h2{
+    font-size: 22px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #1d2124;
+}

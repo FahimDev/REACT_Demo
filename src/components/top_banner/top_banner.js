@@ -10,8 +10,8 @@ class TopBanner extends Component {
                         <Container className="topContent" >
                             <Row>
                                 <Col>
-                                    <h1>Glitch Studios</h1>
-                                    <h4>A hub of Software Engineers</h4>
+                                    <h1 className="topTitle" >Glitch Studios</h1>
+                                    <h4 className="topSubtitle" >A hub of Software Engineers</h4>
                                     <Button variant="primary">info</Button>
                                 </Col>
                             </Row>
