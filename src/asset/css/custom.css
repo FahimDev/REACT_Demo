@@ -1,5 +1,5 @@
 .topFixedBanner{
-    background-image: url("../img/cover.jpg");
+    background-image: url("../img/cover2.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,4 +11,9 @@
     min-height: 500px;
     width: 100%;
     background: rgba(255,153,204,0.1);
+}
+.topContent{
+    color: white;
+    margin-top: 10rem;
+    text-align: center;
 }
