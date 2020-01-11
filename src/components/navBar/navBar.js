@@ -36,6 +36,7 @@ class NavBar extends Component {
                     <Nav className="mr-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#features">Services</Nav.Link>
+                        <Nav.Link href="#pricing">Project Analysis</Nav.Link>
                         <Nav.Link href="#pricing">Contact</Nav.Link>
                     </Nav>
                     </Navbar>
