@@ -56,3 +56,31 @@
 .dynNav{
     color: #0f6674!important;
 }
+
+.centerImage{
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.howWeDo{
+    background-image: url("../img/cover4.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 500px;
+}
+.howWeDoContent{
+    margin-top: 15%;
+}
+.bullet{
+    color: #1e7e34;
+}
+.count1{
+    background-color: rgba(0,0,0,0.5);
+}
+.count2{
+    background-color: rgba(0,0,0,0.3);
+}

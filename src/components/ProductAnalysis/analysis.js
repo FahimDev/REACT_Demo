@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {BarChart, Bar, ResponsiveContainer, XAxis, Tooltip} from "recharts";
 import {Col, Container, Row} from "react-bootstrap";
-import DevCycle from '../../asset/img/Dev.png'
+import DevCycle from '../../asset/img/agileDev.png'
 
 
 class Analysis extends Component {
@@ -44,7 +44,7 @@ class Analysis extends Component {
 
                             </Col>
                             <Col lg={6} md={12} sm={12}>
-                                <img width="300rem" src={DevCycle}/>
+                                <img className="centerImage" width="300rem" src={DevCycle}/>
                             </Col>
                             <Col lg={12} md={12} sm={12}>
                                 <p className="text-justify">
