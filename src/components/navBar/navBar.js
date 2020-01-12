@@ -3,7 +3,7 @@ import {Nav, Navbar} from "react-bootstrap";
 import '../../asset/css/custom.css'
 import navBarLogo0 from '../../asset/img/navLogo.png'
 import navBarLogo1 from'../../asset/img/navLogo0.png'
-
+import GlitchClip from '../../../node_modules/react-glitch-effect/core/Clip';
 class NavBar extends Component {
     constructor() {
         super();
@@ -32,8 +32,10 @@ class NavBar extends Component {
         return (
             <Fragment>
                 <Navbar fixed="top" bg="dark" variant="dark">
-                    <Navbar.Brand className={this.state.navBar}  href="#home"> <img src={this.state.navLogo0} height="30rem" />   Glitch</Navbar.Brand>
-                    <Nav className="mr-auto">
+                    <GlitchClip>
+                    <Navbar.Brand className={this.state.navBar}  href="#home"> <img src={this.state.navLogo0} height="30rem" /> Glitch</Navbar.Brand>
+                    </GlitchClip>
+                        <Nav className="mr-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#features">Services</Nav.Link>
                         <Nav.Link href="#pricing">Project Analysis</Nav.Link>

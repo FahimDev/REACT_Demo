@@ -25,10 +25,10 @@ class Analysis extends Component {
 
         render()
         {
-            let blue="rgba(204, 0, 204,0.8)"
+            let blue="rgba(51, 51, 255,0.8)"
             return (
                 <Fragment>
-                    <Container>
+                    <Container fluid={true}>
                         <h2 className="serviceTitle text-center">Our Project Analysis</h2>
                         <Row>
                             <Col style={{width:'100%', height:'300px'}} lg={6} md={12} sm={12}>
@@ -44,7 +44,7 @@ class Analysis extends Component {
 
                             </Col>
                             <Col lg={6} md={12} sm={12}>
-                                <img width="500rem" src={DevCycle}/>
+                                <img width="300rem" src={DevCycle}/>
                             </Col>
                             <Col lg={12} md={12} sm={12}>
                                 <p className="text-justify">

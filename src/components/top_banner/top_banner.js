@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Container, Row, Col, Button} from "react-bootstrap";
+import GlitchClip from '../../../node_modules/react-glitch-effect/core/Clip';
 import '../../asset/css/custom.css'
 class TopBanner extends Component {
     render() {
@@ -10,7 +11,9 @@ class TopBanner extends Component {
                         <Container className="topContent" >
                             <Row>
                                 <Col>
-                                    <h1 className="topTitle" >Glitch Studios</h1>
+                                    <GlitchClip>
+                                        <h1 className="topTitle" >Glitch Studios</h1>
+                                    </GlitchClip>
                                     <h4 className="topSubtitle" >A hub of Software Engineers</h4>
                                     <Button variant="primary">info</Button>
                                 </Col>
