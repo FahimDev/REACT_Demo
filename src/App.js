@@ -6,6 +6,7 @@ import Analysis from "./components/ProductAnalysis/analysis"
 import HowWeFunction from "./components/howWeFunction/howWeFunction";
 import ResearchProject from "./components/research_project/researchProject";
 import DemoReel from "./components/demo_reel/demo_reel";
+import Footer from "./components/footer/footer";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <HowWeFunction/>
     <ResearchProject/>
     <DemoReel/>
+    <Footer/>
 
     </div>
   );

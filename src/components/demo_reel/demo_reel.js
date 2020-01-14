@@ -31,28 +31,28 @@ class DemoReel extends Component {
                                     </Card.Text>
 
                                 </Card.Body>
-                                <Card.Footer className="text-muted">2 days ago</Card.Footer>
+                                <Card.Footer className="text-muted">4 years ago</Card.Footer>
                             </Card>
                         </Col>
-                        <Col>
-                            <Modal show={this.state.show} onHide={this.ModalColse}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>CGI Demoreel</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                   <Player>
-                                       <BigPlayButton position="center" />
-                                       <source src="https://www.youtube.com/watch?v=FSODEGD9wmA"/>
-                                   </Player>
-                                </Modal.Body>
-                                <Modal.Footer>
-                                    <Button variant="danger" onClick={this.ModalColse}>
-                                        Close
-                                    </Button>
-                                </Modal.Footer>
-                            </Modal>
-                        </Col>
                     </Row>
+                </Container>
+                <Container>
+                    <Modal show={this.state.show} onHide={this.ModalColse}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>CGI Demoreel</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Player>
+                                <BigPlayButton position="center" />
+                                <source src="https://www.youtube.com/watch?v=FSODEGD9wmA"/>
+                            </Player>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="danger" onClick={this.ModalColse}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Container>
             </Fragment>
         );
