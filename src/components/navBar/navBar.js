@@ -31,16 +31,19 @@ class NavBar extends Component {
     render() {
         return (
             <Fragment>
-                <Navbar fixed="top" bg="dark" variant="dark">
+                <Navbar fixed="top" bg="dark"  collapseOnSelect expand="lg" variant="dark">
                     <GlitchClip>
                     <Navbar.Brand className={this.state.navBar}  href="#home"> <img src={this.state.navLogo0} height="30rem" /> Glitch</Navbar.Brand>
                     </GlitchClip>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#features">Services</Nav.Link>
                         <Nav.Link href="#pricing">Project Analysis</Nav.Link>
                         <Nav.Link href="#pricing">Contact</Nav.Link>
                     </Nav>
+                    </Navbar.Collapse>
                     </Navbar>
             </Fragment>
         );
