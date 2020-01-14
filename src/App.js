@@ -5,6 +5,7 @@ import NavBar from "./components/navBar/navBar";
 import Analysis from "./components/ProductAnalysis/analysis"
 import HowWeFunction from "./components/howWeFunction/howWeFunction";
 import ResearchProject from "./components/research_project/researchProject";
+import DemoReel from "./components/demo_reel/demo_reel";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <Analysis/>
     <HowWeFunction/>
     <ResearchProject/>
+    <DemoReel/>
 
     </div>
   );
