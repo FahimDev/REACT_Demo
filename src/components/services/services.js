@@ -11,7 +11,7 @@ class Services extends Component {
             <Fragment>
 
                 <Container className="text-center" >
-                    <h2 className="serviceTitle" >Services</h2>
+                    <h2 className="serviceTitle" >Our Services</h2>
                     <Row>
                         <Col lg={3} md={6} sm={12} >
                             <div className="serviceSlot text-center" >

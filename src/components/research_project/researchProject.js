@@ -9,7 +9,7 @@ class ResearchProject extends Component {
         return (
             <Fragment>
                 <Container>
-                    <h2 className="serviceTitle text-center text-dark" >Research Project</h2>
+                    <h2 className="serviceTitle text-center text-dark" >Our Research Project</h2>
                     <Row className="research_info">
                         <Col lg={6} md={6} sm={12}>
                             <Row>

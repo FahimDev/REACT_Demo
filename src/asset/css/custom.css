@@ -90,3 +90,26 @@
 .playVideo{
     color: #0f6674;
 }
+.TitlePage{
+    background-image: url("../img/DevCover.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 300px;
+}
+.TitlePageOverlay{
+    position: absolute;
+    min-height: 300px;
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+}
+.TitlePageContent{
+    color: white;
+    margin-top: 10rem;
+    text-align: center;
+}
+.pageTitle{
+    font-family: 'Raleway' , sans-serif;
+    background-color: rgba(0,255,34,0.1);
+}
