@@ -14,11 +14,6 @@ class Home extends Component {
             <Fragment>
                 <NavBar/>
                 <TopBanner/>
-                <Services/>
-                <Analysis/>
-                <HowWeFunction/>
-                <ResearchProject/>
-                <DemoReel/>
                 <Footer/>
             </Fragment>
         );

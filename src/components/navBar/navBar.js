@@ -41,10 +41,11 @@ class NavBar extends Component {
                         </Nav>
                     <Nav>
 
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#features">Services</Nav.Link>
-                            <Nav.Link href="#pricing">Project Analysis</Nav.Link>
-                            <Nav.Link href="#pricing">Contact</Nav.Link>
+                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link href="/OurServices">Services</Nav.Link>
+                            <Nav.Link href="/OurProjectAnalysis">Project Analysis</Nav.Link>
+                            <Nav.Link href="/HowWeDo">How WE Do Things</Nav.Link>
+                            <Nav.Link href="/Research">Research</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
                     </Navbar>
