@@ -6,8 +6,26 @@ import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
 import {faMugHot} from "@fortawesome/free-solid-svg-icons";
 import CountUp from 'react-countup';
 import VisibilitySensor from "react-visibility-sensor";
+import restClient from "../../REST_API/restClient";
+import appURL from "../../REST_API/appURL";
 
 class HowWeFunction extends Component {
+
+    constructor() {
+        super();
+        this.state={
+            title:"How we Function?",
+        }
+    }
+
+    componentDidMount() {
+        restClient.GetRequest(appURL.pageTitle).then(result=>{
+            this.setState({title:result[2]['title']})
+        }).catch(error=>{
+            this.setState({title:"How we do Things?"})
+        })
+    }
+
     render() {
         return (
             <Fragment>
@@ -15,7 +33,7 @@ class HowWeFunction extends Component {
                 <Container fluid={true} className="howWeDo p-0" >
 
                         <Container>
-                            <h2 className="text-center text-white" >We Do Things!</h2>
+                            <h2 className="text-center text-white" >{this.state.title}</h2>
                             <Row>
                                 <Col lg={8} md={12} sm={12}>
                                     <Row className="howWeDoContent text-center text-white">

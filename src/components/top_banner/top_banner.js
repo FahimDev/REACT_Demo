@@ -9,15 +9,17 @@ class TopBanner extends Component {
     constructor() {
         super();
         this.state={
-            title:"",
-            subtitle:""
+            title:"Glitch",
+            subtitle:"[404]"
         }
     }
 
     componentDidMount() {
         restClient.GetRequest(appURL.pageTitle).then(result=>{
             this.setState({title:result[0]['title'],subtitle:result[0]['subtitle']})
-        });
+        }).catch(error=>{
+            this.setState({title:"Glitch",subtitle:"Engineers Hub [404]"})
+        })
     }
 
     render() {

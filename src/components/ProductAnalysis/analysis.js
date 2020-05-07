@@ -2,12 +2,16 @@ import React, {Component, Fragment} from 'react';
 import {BarChart, Bar, ResponsiveContainer, XAxis, Tooltip} from "recharts";
 import {Col, Container, Row} from "react-bootstrap";
 import DevCycle from '../../asset/img/agileDev.png'
+import restClient from "../../REST_API/restClient";
+import appURL from "../../REST_API/appURL";
 
 
 class Analysis extends Component {
     constructor(){
         super();
         this.state={
+            title:"Analysis",
+
             data:[
                 {Technology:'C#', Projects:100},
                 {Technology:'node.js', Projects:40},
@@ -21,7 +25,13 @@ class Analysis extends Component {
         }
     }
 
-
+    componentDidMount() {
+        restClient.GetRequest(appURL.pageTitle).then(result=>{
+            this.setState({title:result[6]['title']})
+        }).catch(error=>{
+            this.setState({title:"Project Analysis"})
+        })
+    }
 
         render()
         {
@@ -29,7 +39,7 @@ class Analysis extends Component {
             return (
                 <Fragment>
                     <Container fluid={true}>
-                        <h2 className="serviceTitle text-center">Our Project Analysis</h2>
+                        <h2 className="serviceTitle text-center">{this.state.title}</h2>
                         <Row>
                             <Col style={{width:'100%', height:'300px'}} lg={6} md={12} sm={12}>
                                 <ResponsiveContainer>
