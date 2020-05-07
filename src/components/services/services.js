@@ -12,6 +12,7 @@ class Services extends Component {
     constructor() {
         super();
         this.state={
+            title:"Services [404]",
             ourServices:[]
         }
     }
@@ -19,6 +20,14 @@ class Services extends Component {
     componentDidMount() {
         restClient.GetRequest(appURL.services).then(result=>{
             this.setState({ourServices: result})
+        }).catch(error=>{
+            this.setState({ourServices:"Nothing [404]"})
+        })
+
+        restClient.GetRequest(appURL.pageTitle).then(result=>{
+            this.setState({title:result[1]['title']})
+        }).catch(error=>{
+            this.setState({title:"Our Services [404]"})
         })
     }
 
@@ -40,7 +49,7 @@ class Services extends Component {
             <Fragment>
 
                 <Container className="text-center" >
-                    <h2 className="serviceTitle" >Our Services</h2>
+                    <h2 className="serviceTitle" >{this.state.title}</h2>
                     <Row>
 
                         {serviceView}

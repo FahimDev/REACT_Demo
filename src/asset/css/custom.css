@@ -65,15 +65,22 @@
     margin: auto;
 }
 .howWeDo{
-    background-image: url("../img/cover4.png");
+    background-image: url("../img/cover5.png");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
     min-height: 500px;
 }
+.WeDoCard{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
 .howWeDoContent{
     margin-top: 15%;
+}
+.WeDoText{
+    text-shadow: 2px 0px 0px rgba(0, 0, 0, 1);
 }
 .bullet{
     color: #1e7e34;
@@ -112,4 +119,19 @@
 .pageTitle{
     font-family: 'Raleway' , sans-serif;
     background-color: rgba(0,255,34,0.1);
+}
+.contactTitle{
+    font-family: 'Raleway' , sans-serif;
+    font-size: 30px;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    font-weight: 600;
+}
+.contactBody{
+    margin-bottom: 3rem;
+    font-family: 'Raleway' , sans-serif;
+}
+.about-story{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }

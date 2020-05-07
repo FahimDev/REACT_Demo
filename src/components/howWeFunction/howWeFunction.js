@@ -33,7 +33,7 @@ class HowWeFunction extends Component {
                 <Container fluid={true} className="howWeDo p-0" >
 
                         <Container>
-                            <h2 className="text-center text-white" >{this.state.title}</h2>
+                            <h2 className="WeDoText text-center text-white" >{this.state.title}</h2>
                             <Row>
                                 <Col lg={8} md={12} sm={12}>
                                     <Row className="howWeDoContent text-center text-white">
@@ -65,7 +65,7 @@ class HowWeFunction extends Component {
                                         </Col>
                                     </Row>
                                 </Col>
-                                <Col className="align-content-center" lg={4} md={12} sm={12}>
+                                <Col className="WeDoCard align-content-center" lg={4} md={12} sm={12}>
                                     <Card style={{ width: '18rem' }}>
                                         <Card.Img variant="top" src={DevCycle} />
                                         <Card.Body>

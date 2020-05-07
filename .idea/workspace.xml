@@ -27,6 +27,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/about" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -38,6 +39,9 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\src\components\about" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\public" />
     </key>
@@ -95,6 +99,7 @@
       <workItem from="1587721526961" duration="40000" />
       <workItem from="1588742800640" duration="6753000" />
       <workItem from="1588810120473" duration="7313000" />
+      <workItem from="1588822524868" duration="8050000" />
     </task>
     <servers />
   </component>
