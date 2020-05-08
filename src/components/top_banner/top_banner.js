@@ -34,7 +34,7 @@ class TopBanner extends Component {
                                         <h1 className="topTitle" >{this.state.title}</h1>
                                     </GlitchClip>
                                     <h4 className="topSubtitle" >{this.state.subtitle}</h4>
-                                    <Button variant="primary">info</Button>
+                                    <Button href="/Dev-Story" variant="primary">info</Button>
                                 </Col>
                             </Row>
                         </Container>

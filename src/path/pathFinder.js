@@ -7,6 +7,7 @@ import Function from '../pages/Function/Function'
 import Research from '../pages/Research/Research_Portal'
 import About from '../pages/About/About'
 import Contact from '../pages/Contact/Contact'
+import DevStory from '../pages/dev-story/dev-story'
 
 class PathFinder extends Component {
     render() {
@@ -20,6 +21,7 @@ class PathFinder extends Component {
                     <Route exact path="/Research" component={Research} />
                     <Route exact path="/About" component={About} />
                     <Route exact path="/Contact" component={Contact} />
+                    <Route exact path="/Dev-Story" component={DevStory} />
                 </Switch>
             </Fragment>
         );
