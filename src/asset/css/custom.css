@@ -144,3 +144,40 @@
 .dev-person-pic{
     margin-bottom: 1rem;
 }
+.portal{
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    font-family: 'Raleway' , sans-serif;
+}
+.profileImageBack{
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.textStyle{
+    font-family: 'Raleway' , sans-serif;
+}
+
+@media screen and (min-width: 360px) {
+    .cardBodyProfile {
+        margin-top:4rem;
+    }
+}
+@media screen and (min-width: 500px) {
+    .cardBodyProfile {
+        margin-top:1rem;
+    }
+}
+@media screen and (min-width: 700px) {
+    .cardBodyProfile {
+        margin-top:1rem;
+    }
+}

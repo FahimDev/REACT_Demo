@@ -8,6 +8,8 @@ import Research from '../pages/Research/Research_Portal'
 import About from '../pages/About/About'
 import Contact from '../pages/Contact/Contact'
 import DevStory from '../pages/dev-story/dev-story'
+import Portal from '../pages/Portal/Portal'
+import Profile from '../pages/Profile/MemberProfile'
 
 class PathFinder extends Component {
     render() {
@@ -22,6 +24,8 @@ class PathFinder extends Component {
                     <Route exact path="/About" component={About} />
                     <Route exact path="/Contact" component={Contact} />
                     <Route exact path="/Dev-Story" component={DevStory} />
+                    <Route exact path="/Portal" component={Portal} />
+                    <Route exact path="/Profile" component={Profile} />
                 </Switch>
             </Fragment>
         );

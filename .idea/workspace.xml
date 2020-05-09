@@ -39,11 +39,11 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\src\components\about" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\src\components\about" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -105,6 +105,8 @@
       <workItem from="1588923154160" duration="221000" />
       <workItem from="1588923862642" duration="143000" />
       <workItem from="1588960980685" duration="3269000" />
+      <workItem from="1588988003542" duration="20280000" />
+      <workItem from="1589033100987" duration="3545000" />
     </task>
     <servers />
   </component>
@@ -112,25 +114,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="23" key="#ESLint" timestamp="1578491952188">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1588992877257">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="23" key="#ESLint/0.0.1366.728@0.0.1366.728" timestamp="1578491952188" />
-    <state x="275" y="23" key="#Notifications" timestamp="1578409275218">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="275" y="23" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1578409275218" />
-    <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578414130987">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1578414130987" />
-    <state x="184" y="7" key="SettingsEditor" timestamp="1578498607856">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1578498607856" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1578857432571">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1578857432571" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1588992877257" />
   </component>
 </project>

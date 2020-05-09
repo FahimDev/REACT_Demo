@@ -5,7 +5,11 @@ import navBarLogo0 from '../../asset/img/navLogo.png'
 import navBarLogo1 from'../../asset/img/navLogo0.png'
 import GlitchClip from '../../../node_modules/react-glitch-effect/core/Clip';
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Button from "react-bootstrap/Button";
+
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faGalacticRepublic} from "@fortawesome/free-brands-svg-icons";
+
+
 class NavBar extends Component {
     constructor() {
         super();
@@ -49,15 +53,15 @@ class NavBar extends Component {
                             <Nav.Link href="/HowWeDo">How WE Do Things</Nav.Link>
                             <NavDropdown title="G-Hub" id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Teams</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Member's List</NavDropdown.Item>
+                                <NavDropdown.Item href="/Profile">Member's List</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/OurProjectAnalysis">Project Analysis</NavDropdown.Item>
-                                <NavDropdown.Item className="text-center" style={{backgroundColor: "#000000"}} href="#action/3.4">
+                                <NavDropdown.Item className="text-center" style={{backgroundColor: "#000000"}} href="/Portal">
                                     <GlitchClip>
                                         <b style={{color: "#FFFFFF"}}>Glitch</b><b style={{border: "1px #f7951e",borderRadius:"5px",backgroundColor: "#f7951e",color: "#000000",}}>Hub</b>
                                         <br/>
                                     </GlitchClip>
-                                    <b style={{color: "#13D4D4"}}>Portal</b>
+                                    <b style={{color: "#13D4D4"}}><FontAwesomeIcon icon={faGalacticRepublic} /> Portal</b>
                                 </NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="/Contact">Contact</Nav.Link>
