@@ -17,13 +17,14 @@ import {faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookF, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
 import {faLink} from "@fortawesome/free-solid-svg-icons";
+import{faDotCircle} from "@fortawesome/free-solid-svg-icons";
 
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 import coverImage from '../../asset/img/profileCover.png'
-import profileImage from '../../asset/img/DeveloperNeeds/Dev.jpg'
+import profileImage from '../../asset/img/DeveloperNeeds/DefaultImg.gif'
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
 import Tabs from "react-bootstrap/Tabs";
@@ -43,21 +44,21 @@ class Profile extends Component {
 
             MasterID:props.id,
 
-            fullName:"",
-            title:"",
-            imgPath:"",
+            fullName:"Member Name",
+            title:"Member Title",
+            imgPath:'https://media1.tenor.com/images/304903392bc8d1311cab6572d8a2f7f0/tenor.gif?itemid=9958120',
             fatherName:"",
             motherName:"",
             religion:"",
             relationship:"",
-            currentLoc:"",
+            currentLoc:"Member Current Address ",
             parmanentLoc:"",
             about:"",
-            contact:"",
-            eMail:"",
-            socialFB:"",
-            socialTwit:"",
-            gitHub:"",
+            contact:"+8801XXXXXXXXX",
+            eMail:"xxxxx@example.com",
+            socialFB:"https://www.facebook.com/",
+            socialTwit:"https://twitter.com/",
+            gitHub:"https://github.com/",
             expSummary:"",
 
             hashTag:[],
@@ -65,6 +66,16 @@ class Profile extends Component {
             work:[],
             hobby:[],
             url:[],
+
+            SnT:[],
+            PE:[],
+            Skill:[],
+
+            TnC:[],
+            AnR:[],
+            Member:[],
+
+            Network:[],
         }
 
     }
@@ -92,7 +103,7 @@ class Profile extends Component {
                 expSummary:result[0]['expSummary'],
             })
         }).catch(error=>{
-
+            this.setState({contact:"[404]"})
         })
 
         restClient.GetRequest(appURL.member_hashTag+this.state.MasterID).then(result=>{
@@ -124,6 +135,48 @@ class Profile extends Component {
         }).catch(error=>{
             this.setState({url:"Nothing [404]"})
         })
+
+        restClient.GetRequest(appURL.member_net+this.state.MasterID).then(result=>{
+            this.setState({Network: result})
+        }).catch(error=>{
+            this.setState({Network:"Nothing [404]"})
+        })
+
+        //expert------------------------------------------
+        restClient.GetRequest(appURL.member_exp+this.state.MasterID+'/S&T').then(result=>{
+            this.setState({SnT: result})
+        }).catch(error=>{
+            this.setState({SnT:"Nothing [404]"})
+        })
+        restClient.GetRequest(appURL.member_exp+this.state.MasterID+'/PE').then(result=>{
+            this.setState({PE: result})
+        }).catch(error=>{
+            this.setState({PE:"Nothing [404]"})
+        })
+        restClient.GetRequest(appURL.member_exp+this.state.MasterID+'/Skill').then(result=>{
+            this.setState({Skill: result})
+        }).catch(error=>{
+            this.setState({Skill:"Nothing [404]"})
+        })
+        //---------------------------------------------------
+
+        //achievement----------------------------------------
+        restClient.GetRequest(appURL.member_won+this.state.MasterID+'/t&c').then(result=>{
+            this.setState({TnC: result})
+        }).catch(error=>{
+            this.setState({TnC:"Nothing [404]"})
+        })
+        restClient.GetRequest(appURL.member_won+this.state.MasterID+'/a&r').then(result=>{
+            this.setState({AnR: result})
+        }).catch(error=>{
+            this.setState({AnR:"Nothing [404]"})
+        })
+        restClient.GetRequest(appURL.member_won+this.state.MasterID+'/member').then(result=>{
+            this.setState({Member: result})
+        }).catch(error=>{
+            this.setState({Member:"Nothing [404]"})
+        })
+        //---------------------------------------------------
     }
 
     render() {
@@ -133,6 +186,17 @@ class Profile extends Component {
             return <span>
                         <Badge style={{marginLeft:".5rem"}} variant={hashTags.color}> {hashTags.hashTag} </Badge>
                     </span>
+        })
+
+        const Network = this.state.Network;
+        var ref = Object.keys(Network).length;
+        console.log(ref);
+        const Networks = Network.map(Network=>{
+                return <span>
+                        <ListGroup.Item><FontAwesomeIcon icon={faLongArrowAltRight} /> <b>{Network.name}</b> ( {Network.position} ) <sub> <i> {Network.title} </i> </sub> </ListGroup.Item>
+                        <ListGroup.Item><sup> [<b>Contact:</b> {Network.contact} | <b>Email:</b>  {Network.eMail}] <a href={Network.url}> URL</a> </sup> </ListGroup.Item>
+                        <ListGroup.Item></ListGroup.Item>
+                </span>
         })
 
         const edu = this.state.edu;
@@ -177,6 +241,53 @@ class Profile extends Component {
                  <ListGroup.Item><FontAwesomeIcon icon={faBriefcase} /> <b> {work.type}: </b>  <i> {work.orgName} </i> <sub> {work.rank} [ {work.started} - {work.end}] </sub></ListGroup.Item>
                     </span>
         })
+
+
+        //Expert------------------------------------
+        const PE = this.state.PE;
+        const SnT = this.state.SnT;
+        const Skill = this.state.Skill;
+        const ProjExp = PE.map(PE=> {
+            return <span>
+                          ◌ {PE.experience} <sub> {PE.institution}   [ {PE.startYear} - {PE.endYear} ] </sub> <br/>
+                    </span>
+        })
+        const softTools = SnT.map(SnT=> {
+            return <span>
+                          ◌ {SnT.softwareAndTools} <br/>
+                    </span>
+        })
+        const skills = Skill.map(Skill=> {
+            return <span>
+                        <b>◌ {Skill.skillTitle} : </b> {Skill.skillList} <br/>
+                    </span>
+        })
+        //------------------------------------------
+
+        //Award-------------------------------------
+        const TnC = this.state.TnC;
+        const AnR = this.state.AnR;
+        const Member = this.state.Member;
+
+        const Certifications = TnC.map(TnC=> {
+            return <span>
+                    ◌ {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] </sub> <br/>
+                    </span>
+        })
+
+        const Awards = AnR.map(AnR=> {
+            return <span>
+                    ◌ {AnR.title}: <i>{AnR.prizePosition}</i> <sub> {AnR.prizeCategory} </sub> <br/>
+                    </span>
+        })
+        const Members = Member.map(Member=> {
+            return <span>
+                        <ListGroup.Item><FontAwesomeIcon icon={faCompactDisc} /> {Member.membership} </ListGroup.Item>
+                    </span>
+        })
+        //------------------------------------------
+
+
 
         const hobby = this.state.hobby;
         const hobbies = hobby.map(hobby=> {
@@ -415,38 +526,14 @@ class Profile extends Component {
                                                     {this.state.expSummary}
                                                 </Tab>
                                                 <Tab eventKey="profile" title="Project Experience">
-                                                     I have participated “Satellite Ground Station training” under the supervision of BRAC Onnesha
-                                                    (2019)
-                                                     I have worked with “bKash” merchant account API (2019)
-                                                     I have worked as the Web developer of Chittagong Rent-A-Car (2018). I was also in-charge of
-                                                    Chittagong Rent-A-Car’s Search Engine Optimization project and from January 2019 to November
-                                                    2019. Chittagong Rent-A-Car was ranked as number one in Google Search and Google Map among
-                                                    Chittagong Division.
-                                                     I have developed and commercialized a management desktop software to the “Food Guide” (2018)
-                                                     I was in-charge of the Post-Production unit at “Three Films” (2017-2018)
-                                                     I worked as a 3D modeler and VR developer with Glitch (2016)
-                                                     I have contributed to the video content optimization project for “Apex Footwear Limited” official
-                                                    website.
-                                                     I also have a project under the supervision of Dr. Khandaker Tabin Hasan which is related with
-                                                    Artificial Intelligence domain. The application is capable to recognize user voice command and
-                                                    Design Interior with AR Experience. IBM Watson is also used in this project.(2019)
+                                                    {ProjExp}
                                                 </Tab>
                                                 <Tab eventKey="contact" title="Skills" >
-                                                    Front-End Essentials: HTML, CSS, Bootstrap
-                                                    Programming Language: C#, php, C++,Vanilla JavaScript
-                                                    Framework: C#.NET, Laravel, Lumen, jQuery
-                                                    Runtime Environment: Node.js
-                                                    Database Management System : MySQL, Oracle (10g)
-                                                    Library & Development Kit: React, Open GL, IBM Watson, Google AR Core, Vuforia
-                                                    Game Development: Unity Game Engine
-                                                    2D Graphics Design: Photoshop , Illustrator
-                                                    3D Content Creation: CGI, 3D Modeling, Texture, Animation (Key Frame) [Software: Autodesk Maya]
-                                                    Video: Rotoscoping, VFX, Post-Production [Software: Adobe After Effects]
-                                                    Office Document: MS Office Suit
+                                                    {skills}
                                                 </Tab>
 
                                                 <Tab eventKey="soft&tool" title="Software & Tools" >
-                                                    PS,AE,Maya
+                                                    {softTools}
                                                 </Tab>
                                                 <Tab eventKey="dash" title="-o-" >
 
@@ -463,20 +550,14 @@ class Profile extends Component {
                                         <blockquote className="blockquote mb-0">
                                             <Tabs defaultActiveKey="dash" id="uncontrolled-tab-example">
                                                 <Tab eventKey="home" title="Training and Certifications">
-                                                     Discover Augmented Reality Games Certified, Diego Herrera/Udemy (2019)
-                                                     Satellite Ground Station Training, Bangladesh Innovation Forum (2019)
-                                                     Certification on Game Development, Ministry of ICT Division (2017)
-                                                     CGI Artist Certification, Cycore. (2017)
-                                                     IT Essentials Certification, Cisco (2016)
+                                                    {Certifications}
                                                 </Tab>
                                                 <Tab eventKey="profile" title="Awards & Recognitions">
-                                                     AIUB CS Fest: Champion of Project Showcasing (2016)
-                                                     IUT ICT Fest: Final Round Selection of Project Showcasing (2016)
-                                                     IUT Meccelaration: Runner Up of Project Showcasing (2018)
+                                                    {Awards}
                                                 </Tab>
                                                 <Tab eventKey="contact" title="Community Membership" >
                                                     <ListGroup style={{marginTop:"1rem"}} variant="flush">
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faCompactDisc} /> IEEE</ListGroup.Item>
+                                                        {Members}
                                                     </ListGroup>
                                                 </Tab>
                                                 <Tab eventKey="dash" title="-o-" >
@@ -502,7 +583,7 @@ class Profile extends Component {
                                         <Accordion.Collapse eventKey="0">
                                             <Card.Body>
                                                 <ListGroup variant="flush">
-                                                    <ListGroup.Item><FontAwesomeIcon icon={faLongArrowAltRight} /> <b>Title: </b> <i> Name </i> <a href="/url"> Contact/URL</a></ListGroup.Item>
+                                                    {Networks}
                                                 </ListGroup>
                                             </Card.Body>
                                         </Accordion.Collapse>
