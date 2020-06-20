@@ -1,17 +1,16 @@
 import React, {Component, Fragment} from 'react';
 import NavBar from "../../components/navBar/navBar";
-import PortalPath from "../../components/portal/portal";
-import Footer from "../../components/footer/footer";
+import MemberList from "../../components/member/member";
 
-class Portal extends Component {
+class Member extends Component {
     render() {
         return (
             <Fragment>
                 <NavBar/>
-                <PortalPath/>
+                <MemberList/>
             </Fragment>
         );
     }
 }
 
-export default Portal;
+export default Member;

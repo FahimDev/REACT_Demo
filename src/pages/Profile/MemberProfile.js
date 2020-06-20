@@ -4,11 +4,21 @@ import NavBar from "../../components/navBar/navBar";
 import Footer from "../../components/footer/footer";
 
 class MemberProfile extends Component {
+
+    constructor({match}) {
+        super();
+        this.state={
+            profileID:match.params.memberID
+        }
+
+    }
+
+
     render() {
         return (
             <Fragment>
                 <NavBar/>
-                <Profile/>
+                <Profile id={this.state.profileID} />
                 <Footer/>
             </Fragment>
         );

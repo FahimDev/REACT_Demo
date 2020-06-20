@@ -53,7 +53,7 @@ class NavBar extends Component {
                             <Nav.Link href="/HowWeDo">How WE Do Things</Nav.Link>
                             <NavDropdown title="G-Hub" id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Teams</NavDropdown.Item>
-                                <NavDropdown.Item href="/Profile">Member's List</NavDropdown.Item>
+                                <NavDropdown.Item href="/Member">Member's List</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/OurProjectAnalysis">Project Analysis</NavDropdown.Item>
                                 <NavDropdown.Item className="text-center" style={{backgroundColor: "#000000"}} href="/Portal">

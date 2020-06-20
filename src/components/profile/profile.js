@@ -16,6 +16,7 @@ import {faEnvelopeSquare} from "@fortawesome/free-solid-svg-icons";
 import {faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookF, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
+import {faLink} from "@fortawesome/free-solid-svg-icons";
 
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
@@ -28,22 +29,169 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import Dropdown from "react-bootstrap/Dropdown";
-import {BigPlayButton, Player} from "video-react";
+
+import restClient from "../../REST_API/restClient";
+import appURL from "../../REST_API/appURL";
 
 
 class Profile extends Component {
 
-    constructor() {
+    constructor(props) {
         super();
         this.state={
-            show:false
+            show:false,
+
+            MasterID:props.id,
+
+            fullName:"",
+            title:"",
+            imgPath:"",
+            fatherName:"",
+            motherName:"",
+            religion:"",
+            relationship:"",
+            currentLoc:"",
+            parmanentLoc:"",
+            about:"",
+            contact:"",
+            eMail:"",
+            socialFB:"",
+            socialTwit:"",
+            gitHub:"",
+            expSummary:"",
+
+            hashTag:[],
+            edu:[],
+            work:[],
+            hobby:[],
+            url:[],
         }
+
     }
     ModalColse=()=> this.setState({show:false});
     ModalOpen=()=> this.setState({show:true});
 
+    componentDidMount() {
+        restClient.GetRequest(appURL.member_bio+this.state.MasterID).then(result=>{
+            this.setState({
+                fullName:result[0]['fullName'],
+                title:result[0]['title'],
+                imgPath:result[0]['imgPath'],
+                religion:result[0]['religion'],
+                fatherName:result[0]['fatherName'],
+                motherName:result[0]['motherName'],
+                relationship:result[0]['relationship'],
+                currentLoc:result[0]['currentLoc'],
+                parmanentLoc:result[0]['parmanentLoc'],
+                about:result[0]['about'],
+                contact:result[0]['contact'],
+                eMail:result[0]['eMail'],
+                socialFB:result[0]['socialFB'],
+                socialTwit:result[0]['socialTwit'],
+                gitHub:result[0]['gitHub'],
+                expSummary:result[0]['expSummary'],
+            })
+        }).catch(error=>{
+
+        })
+
+        restClient.GetRequest(appURL.member_hashTag+this.state.MasterID).then(result=>{
+            this.setState({hashTag: result})
+        }).catch(error=>{
+            this.setState({hashTag:"Nothing [404]"})
+        })
+
+        restClient.GetRequest(appURL.member_edu+this.state.MasterID).then(result=>{
+            this.setState({edu: result})
+        }).catch(error=>{
+            this.setState({edu:"Nothing [404]"})
+        })
+
+        restClient.GetRequest(appURL.member_work+this.state.MasterID).then(result=>{
+            this.setState({work: result})
+        }).catch(error=>{
+            this.setState({work:"Nothing [404]"})
+        })
+
+        restClient.GetRequest(appURL.member_hobby+this.state.MasterID).then(result=>{
+            this.setState({hobby: result})
+        }).catch(error=>{
+            this.setState({hobby:"Nothing [404]"})
+        })
+
+        restClient.GetRequest(appURL.member_url+this.state.MasterID).then(result=>{
+            this.setState({url: result})
+        }).catch(error=>{
+            this.setState({url:"Nothing [404]"})
+        })
+    }
+
     render() {
+
+        const hashTags = this.state.hashTag;
+        const hashTagView = hashTags.map(hashTags=>{
+            return <span>
+                        <Badge style={{marginLeft:".5rem"}} variant={hashTags.color}> {hashTags.hashTag} </Badge>
+                    </span>
+        })
+
+        const edu = this.state.edu;
+        const eduSchool = edu.map(edu=>{
+            return <span>
+                        {edu.school}  {edu.sBatch}  <br/>
+                    </span>
+        })
+
+        const eduCollege = edu.map(edu=> {
+            return <span>
+                        {edu.college}  {edu.cBatch}  <br/>
+                    </span>
+        })
+
+        const eduDiploma = edu.map(edu=> {
+            return <span>
+                        {edu.diploma} <sub> {edu.dSub} {edu.dBatch} </sub> <br/>
+                    </span>
+        })
+
+        const eduBachelor = edu.map(edu=> {
+            return <span>
+                        {edu.bachelor} <sub> {edu.baSub} {edu.baBatch} </sub>  <br/>
+                    </span>
+        })
+
+        const eduMasters = edu.map(edu=> {
+            return <span>
+                        {edu.masters}  <sub> {edu.maSub}  {edu.msBatch}  </sub>  <br/>
+                    </span>
+        })
+        const eduPhD = edu.map(edu=> {
+            return <span>
+                        {edu.phd}  <sub> {edu.phdSub} {edu.passYear} </sub>  <br/>
+                    </span>
+        })
+
+        const work = this.state.work;
+        const works = work.map(work=> {
+            return <span>
+                 <ListGroup.Item><FontAwesomeIcon icon={faBriefcase} /> <b> {work.type}: </b>  <i> {work.orgName} </i> <sub> {work.rank} [ {work.started} - {work.end}] </sub></ListGroup.Item>
+                    </span>
+        })
+
+        const hobby = this.state.hobby;
+        const hobbies = hobby.map(hobby=> {
+            return <span>
+                        <ListGroup.Item><FontAwesomeIcon icon={faCompactDisc} /> {hobby.hobby} </ListGroup.Item>
+                    </span>
+        })
+
+        const url = this.state.url;
+        const urls = url.map(url=> {
+            return <span>
+                        <Button className='mr-2' href={url.url} variant="outline-secondary"> {url.buttonTitle} </Button>
+                    </span>
+        })
+
         return (
             <Fragment>
 
@@ -62,7 +210,7 @@ class Profile extends Component {
                                             <Col lg={12} md={12} sm={12}>
                                                 <img className="centerImage" style={{borderRadius: "10%" ,
                                                     borderColor:"#13D4D4",border:"solid"}}
-                                                     src={profileImage} height="200rem" />
+                                                     src={this.state.imgPath} height="200rem" />
                                             </Col>
                                             <Col lg={12} md={12} sm={12}>
                                                 <Jumbotron fluid>
@@ -73,18 +221,18 @@ class Profile extends Component {
                                                         <Col lg={8} md={8} sm={8}>
                                                             <Button variant="dark">
                                                                 <Badge variant="light"><FontAwesomeIcon icon={faUserTie} />
-                                                                </Badge> Md.Ariful Islam Fahim
+                                                                </Badge> {this.state.fullName}
                                                             </Button>
                                                             <br/>
                                                             <Badge pill variant="dark">
-                                                                <i>Software Engineer</i>
+                                                                <i>{this.state.title}</i>
                                                             </Badge>
                                                             <br/>
-                                                            <FontAwesomeIcon icon={faPrayingHands} /> <b>Religion:  </b>  <i> Islam </i> <br/>
-                                                            <FontAwesomeIcon icon={faHeart} /> <b>Relationship:  </b>  <i> Single </i> <br/>
-                                                            <FontAwesomeIcon icon={faHome} /> <b>Father:  </b>  <i> Engr.Md. Nur Hossain </i> <br/>
-                                                            <FontAwesomeIcon icon={faHome} />  <b>Mother:  </b>  <i> Ferdouse Yeasmin </i> <br/>
-                                                            <FontAwesomeIcon icon={faMapMarkerAlt} /> <b>Home Town:  </b>Chittagong,Bangladesh
+                                                            <FontAwesomeIcon icon={faPrayingHands} /> <b>Religion:  </b>  <i> {this.state.religion} </i> <br/>
+                                                            <FontAwesomeIcon icon={faHeart} /> <b>Relationship:  </b>  <i> {this.state.relationship} </i> <br/>
+                                                            <FontAwesomeIcon icon={faHome} /> <b>Father:  </b>  <i> {this.state.fatherName} </i> <br/>
+                                                            <FontAwesomeIcon icon={faHome} />  <b>Mother:  </b>  <i> {this.state.motherName} </i> <br/>
+                                                            <FontAwesomeIcon icon={faMapMarkerAlt} /> <b>Home Town:  </b> <i>{this.state.parmanentLoc}</i>
 
                                                         </Col>
                                                         <Col lg={2} md={2} sm={2}>
@@ -114,16 +262,16 @@ class Profile extends Component {
                                                     <img style={{borderRadius: "10%" ,
                                                         borderColor:"#13D4D4",border:"solid"}}
                                                          onClick={this.ModalOpen}
-                                                         src={profileImage} height="120rem" />
+                                                         src={this.state.imgPath} height="120rem" />
                                                 </Col>
                                                 <Col lg={12} md={12} sm={12}>
                                                     <Button onClick={this.ModalOpen} variant="dark">
                                                         <Badge variant="light"><FontAwesomeIcon icon={faUserTie} />
-                                                        </Badge> Md.Ariful Islam Fahim
+                                                        </Badge> {this.state.fullName}
                                                     </Button>
                                                     <br/>
                                                     <Badge pill variant="dark">
-                                                        <i>Software Engineer</i>
+                                                        <i> {this.state.title} </i>
                                                     </Badge>
                                                 </Col>
                                             </Row>
@@ -133,19 +281,16 @@ class Profile extends Component {
                                                 <Card className="cardBodyProfile" border="info" style={{  }}>
                                                     <Card.Body>
                                                         <p>#HashTag:</p>
-                                                        <Badge style={{marginLeft:".5rem"}} variant="info">Web Development</Badge>
-                                                        <Badge style={{marginLeft:".5rem"}} variant="info">Software Development</Badge>
-                                                        <Badge style={{marginLeft:".5rem"}} variant="info">Game Development</Badge>
-                                                        <Badge style={{marginLeft:".5rem"}} variant="info">3D Animation</Badge>
+                                                        {hashTagView}
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
                                             <Col lg={12} md={12} sm={12}>
                                                 <Card.Text>
                                                     <ListGroup variant="flush">
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faMobile} /> +8801712844177</ListGroup.Item>
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faEnvelopeSquare} /> fahim.arif0373@outlook.com</ListGroup.Item>
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faMapMarkerAlt} /> Chittagong,Bangladesh</ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faMobile} /> {this.state.contact} </ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faEnvelopeSquare} /> {this.state.eMail} </ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faMapMarkerAlt} /> {this.state.currentLoc} </ListGroup.Item>
                                                     </ListGroup>
                                                 </Card.Text>
                                             </Col>
@@ -167,12 +312,12 @@ class Profile extends Component {
                                             <Accordion.Collapse eventKey="0">
                                                 <Card.Body>
                                                     <ListGroup variant="flush">
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faBookReader} /> <b>School: </b></ListGroup.Item>
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faUserGraduate} /> <b>College: </b> </ListGroup.Item>
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faUserGraduate} /> <b>Diploma Degree: </b></ListGroup.Item>
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faGraduationCap} /> <b>Bachelor Degree: </b></ListGroup.Item>
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faUniversity} /> <b>Masters Degree: </b></ListGroup.Item>
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faAward} /> <b>PhD: </b></ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faBookReader} /> <b>School: </b> <i> {eduSchool} </i></ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faUserGraduate} /> <b>College: </b> <i> {eduCollege} </i> </ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faUserGraduate} /> <b>Diploma Degree: </b> <i> {eduDiploma} </i> </ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faGraduationCap} /> <b>Bachelor Degree: </b> <i> {eduBachelor} </i> </ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faUniversity} /> <b>Masters Degree: </b> <i> {eduMasters} </i> </ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faAward} /> <b>PhD: </b> <i> {eduPhD} </i> </ListGroup.Item>
                                                     </ListGroup>
                                                 </Card.Body>
                                             </Accordion.Collapse>
@@ -189,7 +334,7 @@ class Profile extends Component {
                                         <Accordion.Collapse eventKey="0">
                                             <Card.Body>
                                                 <ListGroup variant="flush">
-                                                    <ListGroup.Item><FontAwesomeIcon icon={faBriefcase} /> <b>[Company/Business] </b>  <i> [Rank] </i>  <b> [Start Date] </b>  <b> [End Date] </b> </ListGroup.Item>
+                                                    {works}
                                                 </ListGroup>
                                             </Card.Body>
                                         </Accordion.Collapse>
@@ -206,8 +351,23 @@ class Profile extends Component {
                                         <Accordion.Collapse eventKey="0">
                                             <Card.Body>
                                                 <ListGroup variant="flush">
-                                                    <ListGroup.Item><FontAwesomeIcon icon={faCompactDisc} /> Examples </ListGroup.Item>
+                                                    {hobbies}
                                                 </ListGroup>
+                                            </Card.Body>
+                                        </Accordion.Collapse>
+                                    </Card>
+                                </Accordion>
+                                <Accordion>
+                                    <Card className="textStyle">
+                                        <Card.Header>
+                                            <Accordion.Toggle className="textStyle" as={Button} variant="link" eventKey="0">
+                                                <FontAwesomeIcon icon={faLink} />
+                                                <b> Links</b>
+                                            </Accordion.Toggle>
+                                        </Card.Header>
+                                        <Accordion.Collapse eventKey="0">
+                                            <Card.Body>
+                                                {urls}
                                             </Card.Body>
                                         </Accordion.Collapse>
                                     </Card>
@@ -218,15 +378,15 @@ class Profile extends Component {
                                 <Row>
                                     <Col lg={12} md={4} sm={4}>
                                         <br/>
-                                        <Button href="/facebook" variant="primary"><FontAwesomeIcon icon={faFacebookF} /></Button>
+                                        <Button href={this.state.socialFB} variant="primary"><FontAwesomeIcon icon={faFacebookF} /></Button>
                                         <br/> <br/>
                                     </Col>
                                     <Col lg={12} md={4} sm={4}>
-                                        <Button href="/twitter" variant="info"><FontAwesomeIcon icon={faTwitter} /></Button>
+                                        <Button href={this.state.socialTwit} variant="info"><FontAwesomeIcon icon={faTwitter} /></Button>
                                         <br/> <br/>
                                     </Col>
                                     <Col lg={12} md={4} sm={4}>
-                                        <Button href="/github" variant="dark"><FontAwesomeIcon icon={faGithub} /></Button>
+                                        <Button href={this.state.gitHub} variant="dark"><FontAwesomeIcon icon={faGithub} /></Button>
                                         <br/> <br/>
                                     </Col>
                                 </Row>
@@ -237,8 +397,7 @@ class Profile extends Component {
                                     <Card.Body>
                                         <Card.Title>About:</Card.Title>
                                         <Card.Text>
-                                            Some quick example text to build on the card title and make up the bulk
-                                            of the card's content.
+                                            {this.state.about}
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
@@ -251,20 +410,9 @@ class Profile extends Component {
                                     <Card.Header>Qualification</Card.Header>
                                     <Card.Body>
                                         <blockquote className="blockquote mb-0">
-                                            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                                            <Tabs defaultActiveKey="dash" id="uncontrolled-tab-example">
                                                 <Tab eventKey="home" title="Experience Summary">
-                                                    I am a final year student of Software Engineering Department(BSc.) at AIUB.
-                                                     I have expertise on Desktop online/offline software development
-                                                     In web development I also have a very good experience. Some projects (CRUD) are uploaded in
-                                                    my Github account (Public) which are developed in different Languages and Frameworks.
-                                                     I also have knowledge on Search Engine Optimization.
-                                                     Most specifically for android/desktop 3D game development including AR, VR and Voice
-                                                    Command I have a very good experience.
-                                                     I have a great skill of Business Communication (Bangla/English).
-                                                     I have leading experience and I was team leader at most of my academic projects. I was also an
-                                                    assistant Tech Lead at Glitch (2018)
-                                                     I have excellent skill of Video Post-Production, 3D Modeling and Animation.
-                                                     I also have skills on 2D Graphics Design.
+                                                    {this.state.expSummary}
                                                 </Tab>
                                                 <Tab eventKey="profile" title="Project Experience">
                                                      I have participated “Satellite Ground Station training” under the supervision of BRAC Onnesha
@@ -300,6 +448,9 @@ class Profile extends Component {
                                                 <Tab eventKey="soft&tool" title="Software & Tools" >
                                                     PS,AE,Maya
                                                 </Tab>
+                                                <Tab eventKey="dash" title="-o-" >
+
+                                                </Tab>
                                             </Tabs>
                                         </blockquote>
                                     </Card.Body>
@@ -310,7 +461,7 @@ class Profile extends Component {
                                     <Card.Header>Achievement</Card.Header>
                                     <Card.Body>
                                         <blockquote className="blockquote mb-0">
-                                            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                                            <Tabs defaultActiveKey="dash" id="uncontrolled-tab-example">
                                                 <Tab eventKey="home" title="Training and Certifications">
                                                      Discover Augmented Reality Games Certified, Diego Herrera/Udemy (2019)
                                                      Satellite Ground Station Training, Bangladesh Innovation Forum (2019)
@@ -327,6 +478,9 @@ class Profile extends Component {
                                                     <ListGroup style={{marginTop:"1rem"}} variant="flush">
                                                         <ListGroup.Item><FontAwesomeIcon icon={faCompactDisc} /> IEEE</ListGroup.Item>
                                                     </ListGroup>
+                                                </Tab>
+                                                <Tab eventKey="dash" title="-o-" >
+
                                                 </Tab>
                                             </Tabs>
                                         </blockquote>
