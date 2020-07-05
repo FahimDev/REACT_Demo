@@ -5,9 +5,9 @@ import {
     faAward,
     faBookReader, faBoxOpen, faBriefcase, faCompactDisc,
     faEnvelope,
-    faGraduationCap, faHeart, faHome, faLongArrowAltRight, faNetworkWired,
-    faPhoneVolume, faPlayCircle, faPrayingHands,
-    faUniversity
+    faGraduationCap, faHeart, faHome, faLongArrowAltRight, faMale, faMars, faNetworkWired,
+    faPhoneVolume, faPlayCircle, faPrayingHands, faTint,
+    faUniversity, faVenus
 } from "@fortawesome/free-solid-svg-icons";
 import {faUserGraduate} from "@fortawesome/free-solid-svg-icons";
 import {faUserTie} from "@fortawesome/free-solid-svg-icons";
@@ -89,6 +89,8 @@ class Profile extends Component {
                 title:result[0]['title'],
                 imgPath:result[0]['imgPath'],
                 religion:result[0]['religion'],
+                gender:result[0]['gender'],
+                blood:result[0]['blood'],
                 fatherName:result[0]['fatherName'],
                 motherName:result[0]['motherName'],
                 relationship:result[0]['relationship'],
@@ -180,6 +182,9 @@ class Profile extends Component {
     }
 
     render() {
+
+
+        const GenderInfo = this.state.gender;
 
         const hashTags = this.state.hashTag;
         const hashTagView = hashTags.map(hashTags=>{
@@ -339,6 +344,10 @@ class Profile extends Component {
                                                                 <i>{this.state.title}</i>
                                                             </Badge>
                                                             <br/>
+
+                                                            {GenderInfo=="Male"?<FontAwesomeIcon icon={faMars} />
+                                                            :<FontAwesomeIcon icon={faVenus} />
+                                                            }<b>Gender:  </b>  <i> {this.state.gender} </i> <br/>
                                                             <FontAwesomeIcon icon={faPrayingHands} /> <b>Religion:  </b>  <i> {this.state.religion} </i> <br/>
                                                             <FontAwesomeIcon icon={faHeart} /> <b>Relationship:  </b>  <i> {this.state.relationship} </i> <br/>
                                                             <FontAwesomeIcon icon={faHome} /> <b>Father:  </b>  <i> {this.state.fatherName} </i> <br/>
@@ -399,6 +408,7 @@ class Profile extends Component {
                                             <Col lg={12} md={12} sm={12}>
                                                 <Card.Text>
                                                     <ListGroup variant="flush">
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faTint} color="red" /> {this.state.blood} </ListGroup.Item>
                                                         <ListGroup.Item><FontAwesomeIcon icon={faMobile} /> {this.state.contact} </ListGroup.Item>
                                                         <ListGroup.Item><FontAwesomeIcon icon={faEnvelopeSquare} /> {this.state.eMail} </ListGroup.Item>
                                                         <ListGroup.Item><FontAwesomeIcon icon={faMapMarkerAlt} /> {this.state.currentLoc} </ListGroup.Item>
