@@ -194,8 +194,8 @@ class Profile extends Component {
         })
 
         const Network = this.state.Network;
-        var ref = Object.keys(Network).length;
-        console.log(ref);
+        var ref = (Network).length;
+        //console.log(ref);
         const Networks = Network.map(Network=>{
                 return <span>
                         <ListGroup.Item><FontAwesomeIcon icon={faLongArrowAltRight} /> <b>{Network.name}</b> ( {Network.position} ) <sub> <i> {Network.title} </i> </sub> </ListGroup.Item>
@@ -206,38 +206,70 @@ class Profile extends Component {
 
         const edu = this.state.edu;
         const eduSchool = edu.map(edu=>{
-            return <span>
+            //console.log("AtoPoto"+edu.school);
+            if(edu.school == null){
+
+            }
+            else{
+                return <span>
                         {edu.school}  {edu.sBatch}  <br/>
                     </span>
+            }
+
         })
 
         const eduCollege = edu.map(edu=> {
-            return <span>
+            if(edu.college== null){
+
+            }
+            else{
+                return <span>
                         {edu.college}  {edu.cBatch}  <br/>
                     </span>
+            }
+
         })
 
         const eduDiploma = edu.map(edu=> {
-            return <span>
+            if(edu.diploma == null){}
+            else{
+                return <span>
                         {edu.diploma} <sub> {edu.dSub} {edu.dBatch} </sub> <br/>
                     </span>
+            }
+
         })
 
         const eduBachelor = edu.map(edu=> {
-            return <span>
+            if(edu.bachelor == null){}
+            else{
+                return <span>
                         {edu.bachelor} <sub> {edu.baSub} {edu.baBatch} </sub>  <br/>
                     </span>
+            }
+
         })
 
         const eduMasters = edu.map(edu=> {
-            return <span>
+            if(edu.masters == null){
+
+            }
+            else{
+                return <span>
                         {edu.masters}  <sub> {edu.maSub}  {edu.msBatch}  </sub>  <br/>
                     </span>
+            }
+
         })
         const eduPhD = edu.map(edu=> {
-            return <span>
+            if(edu.phd == null){
+
+            }else{
+                return <span>
                         {edu.phd}  <sub> {edu.phdSub} {edu.passYear} </sub>  <br/>
                     </span>
+            }
+
         })
 
         const work = this.state.work;
@@ -593,7 +625,7 @@ class Profile extends Component {
                                         <Accordion.Collapse eventKey="0">
                                             <Card.Body>
                                                 <ListGroup variant="flush">
-                                                    {Networks}
+                                                    {ref == 0 ? <b>Available upon request</b>:  Networks}
                                                 </ListGroup>
                                             </Card.Body>
                                         </Accordion.Collapse>
