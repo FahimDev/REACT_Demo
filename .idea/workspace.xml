@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="532e519c-6be0-4a16-85e2-e105441c370a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/REST_API/appURL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/REST_API/appURL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/developer-friendly/developer-friendly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/developer-friendly/developer-friendly.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/research_project/researchProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/research_project/researchProject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/services/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/services/services.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +125,8 @@
       <workItem from="1593916534894" duration="33000" />
       <workItem from="1593965887377" duration="7000" />
       <workItem from="1594270551738" duration="3961000" />
+      <workItem from="1595354708067" duration="4036000" />
+      <workItem from="1595428235318" duration="11001000" />
     </task>
     <servers />
   </component>
@@ -127,10 +134,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="339" y="162" key="run.anything.popup" timestamp="1588992877257">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1595357723300">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1588992877257" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1595357723300" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1592668225464">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

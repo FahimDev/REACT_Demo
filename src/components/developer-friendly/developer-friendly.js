@@ -2,6 +2,10 @@ import React, {Component, Fragment} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Dropdown from "react-bootstrap/Dropdown";
+//import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+
+
+import uiGIF from '../../asset/img/DeveloperNeeds/tempUI.jpg'
 
 import DevPerson  from '../../asset/img/DeveloperNeeds/Dev.jpg';
 import react from '../../asset/img/DeveloperNeeds/react logo.png';
@@ -16,13 +20,37 @@ import phpMyAdmin  from '../../asset/img/DeveloperNeeds/PhpMyAdmin.svg';
 import lumen  from '../../asset/img/DeveloperNeeds/lumen.jpg';
 import jwt  from '../../asset/img/DeveloperNeeds/jwt.png';
 import swagger  from '../../asset/img/DeveloperNeeds/swagger-opendox.png';
-import xam  from '../../asset/img/DeveloperNeeds/Xamarin.png';
+import xam  from '../../asset/img/DeveloperNeeds/flutter.png';
 import cSharp  from '../../asset/img/DeveloperNeeds/C_Sharp.png';
 import git  from '../../asset/img/DeveloperNeeds/git.png';
 import ListGroup from "react-bootstrap/ListGroup";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import ToggleButton from "react-bootstrap/ToggleButton";
+import BootstrapSwitchButton from "bootstrap-switch-button-react/lib/bootstrap-switch-button-react";
+import {faPrayingHands} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
+import {faEyeSlash} from "@fortawesome/free-solid-svg-icons/faEyeSlash";
 
 
 class DeveloperFriendly extends Component {
+
+    constructor() {
+        super();
+        this.state={
+            checked:true,
+            language:true,
+        }
+        this.handleChanged = this.handleChanged.bind(this);
+        this.langChange = this.langChange.bind(this);
+    }
+    handleChanged(checked){
+        this.setState({checked})
+    }
+    langChange(language){
+        this.setState({language})
+    }
+
     render() {
         return (
             <Fragment>
@@ -355,9 +383,9 @@ class DeveloperFriendly extends Component {
 
                             <Col className="text-center" lg={4} md={6} sm={12}>
                                 <Card border="light" style={{ width: '18rem' }}>
-                                    <Card.Header className="text-center" >Xamarin</Card.Header>
+                                    <Card.Header className="text-center" >Flutter</Card.Header>
                                     <Card.Body>
-                                        <Card.Title className="text-center">Developer Platform <br/>[ .NET ]</Card.Title>
+                                        <Card.Title className="text-center">Dart</Card.Title>
                                         <img src={xam} height={80} />
                                         <Dropdown className="dev-stoty">
                                             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
@@ -366,17 +394,18 @@ class DeveloperFriendly extends Component {
                                             <Dropdown.Menu>
                                                 <Dropdown.Item href="#/action-1">
                                                     <Card.Text className="text-center text-justify" >
-                                                        Xamarin is a .NET developer<br/>
-                                                        platform made up of tools,<br/>
-                                                        programming languages, and <br/>
-                                                        libraries for building many <br/>
-                                                        different types of applications. <br/>
-                                                        Xamarin supplies add-ins to <br/>
-                                                        Microsoft Visual Studio that <br/>
-                                                        allows developers to build <br/>
-                                                        Android, iOS, and Windows <br/>
-                                                        apps within the IDE using <br/>
-                                                        code completion and IntelliSense.<br/>
+                                                        Flutter is Google’s UI toolkit<br/>
+                                                        for building beautiful,<br/>
+                                                        natively compiled applications <br/>
+                                                        for mobile, web, and <br/>
+                                                        desktop from a single codebase.<br/>
+                                                        Dart is AOT (Ahead Of Time) compiled <br/>
+                                                        to fast, predictable, native code, <br/>
+                                                        which allows almost  <br/>
+                                                        all of Flutter to be written in Dart.<br/>
+                                                        Because Flutter apps are compiled to native code, <br/>
+                                                        they do not require a slow bridge between<br/>
+                                                        realms They also start up much faster.<br/>
                                                     </Card.Text>
                                                 </Dropdown.Item>
                                             </Dropdown.Menu>
@@ -490,18 +519,32 @@ class DeveloperFriendly extends Component {
                                                         </Card>
                                                     </Col>
 
-                                                    <Col className="dev-person-pic" lg={12} md={12} sm={12}>
+                                                    <Col className="text-justify dev-person-pic" lg={12} md={12} sm={12}>
                                                         <Card border="info" style={{  }}>
                                                             <Card.Body>
-                                                                <h5>Development Tools:</h5>
-                                                                <ListGroup variant="flush">
-                                                                    <ListGroup.Item>Visual Studio</ListGroup.Item>
-                                                                    <ListGroup.Item>Web Storm</ListGroup.Item>
-                                                                    <ListGroup.Item>Unity</ListGroup.Item>
-                                                                    <ListGroup.Item>Auto Desk Maya</ListGroup.Item>
-                                                                    <ListGroup.Item>Adobe Photoshop & Illustrator</ListGroup.Item>
-                                                                    <ListGroup.Item>Adobe After Effect</ListGroup.Item>
-                                                                </ListGroup>
+                                                                <h5>{this.state.language&&this.state.checked==false?"কিছু কথা:":"Some Words:"}</h5>
+                                                                <BootstrapSwitchButton onChange={this.handleChanged} id="visibility" onlabel=<FontAwesomeIcon icon={faEye} /> offlabel=<FontAwesomeIcon icon={faEyeSlash} /> checked={this.state.checked} onstyle="outline-success" offstyle="outline-danger"/>
+                                                                <br/>
+                                                                <p> Click to {this.state.checked ? "show" : "hide"}</p>
+                                                                <br/>
+                                                                <ToggleButtonGroup onChange={this.langChange} type="radio" name="options" defaultValue={true}>
+                                                                    <ToggleButton value={false}>English</ToggleButton>
+                                                                    <ToggleButton value={true}>বাংলা</ToggleButton>
+                                                                </ToggleButtonGroup>
+                                                                <br/>
+                                                                <br/>
+                                                                <p>
+                                                                    {this.state.checked==true ? ""
+                                                                        :
+                                                                        this.state.language ?
+                                                                        "২০১৮ থেকে সরাসরি html+php এবং ক্রমান্বয়ে Laravel framework দিয়ে কাজ করলেও FrontEnd এ blade বা Node.js এর ক্ষেত্রে ejs এর উপর নির্ভর করতাম। এই website টি আমার প্রথম এবং একক React প্রজেক্ট।এই React সাইট ফুল dynamic যা আমার একটি Lumen project এর API দ্বারা নিন্ত্রিত হচ্ছে। এই website এ এর কোন Admin Panel নেই৷ এর Admin Panel হিসেবে আছে আমার বানানো আরেকটি flutter (Dart) application যার মাধ্যমে Admin login করতে পারবে৷ Super Admin এর ক্ষেত্রে রয়েছে C# Desktop application।সব মিলিয়ে একটি সিস্টেম ৪টি আলাদা প্লাটফর্মের সমন্বয়ে চলমান আছে যার প্রতিটি আমার একক কাজ।প্রতিদিনের ব্যস্ততার মধ্যেও কিছু সময় বের করে যা আমি করেছি।তাই কিছু ক্ষুত হয়তো থাকতেও পারে।তবে Admin operations এখানেই রয়েছে একটি বিশেষত্ব, যাতে সকল ধরনের admin কে লাগইন করার সময় user-name আর password প্রদানের পর একটি অতিগোপন encrypted Token দেওয়া হয়৷ প্রতিবার login এ এই টোকেন হয় আলাদা। আর একটি নির্দিষ্ট সময় পর তা expire হয়ে যাবে। এর সময় পর সেই encrypted token আমার নিজের server application ও আর decrypt করতে পারবে না।বিষয় টা Digital Certificate এর সাথে রিলেটেড। তবে এইখানে আমি symmetric key কে নিজের মতো modifyকরে asymmetric করেছি। যার ফলে এইখানে private key & public key দুটোই দরকার হলেও কাজ করার ধরণ আমার নিজের মতো design করা। সব থেকে বড় ব্যাপার হচ্ছে admin সঠিক password দিয়ে login করার পরেও প্রতিটি কাজের জন্য তার application কে এই টোকেন ব্যবহার করতে হবে যা এতটা কঠিন নিরাপত্তা দিয়ে নিয়ন্ত্রিত। সুতরাং কোন অনধিকার প্রবেশকারী পাসওয়ার্ড পেলেও যেকোন স্থান থেকে HTTP request দিয়ে এই website এর কোন তথ্য পরিবর্তন করতে পারবে না।এমনকি প্রতিটি Password কে Argon2 algorithm দ্বারা হ্যাশ করা যেখানে একই password এর ভিন্ন Hash Value থাকে। যার জন্য Brute Force Attack বা Dictionary Attack এতটা সহজ নয়।এই Argon2 যে একটা হ্যাশিং আলগোরিদিম যাতে হ্যাশ হওয়া পাসওয়ার্ড এর প্রকৃত ভ্যালু আর জানা যায় না। শুধুমাত্র যাচাই করা যায়। একে \" most recommended for password hashing\" বলা হয়।\n" +
+                                                                            "কিন্তু মজার বিষয় হলো এত জটিল নিরাপত্তা-বলয় সম্পূর্ণ স্বয়ংক্রিয়। user এই application অন্য সব application এর মত সহজেই ব্যাবহার করতে পারবে। শুধুমাত্র বাকি সব application এর মত নিজের user-name এবং password গোপন এবং মনে রাখতে হবে।\n" +
+                                                                            "[ বিঃদ্রঃ উপরের কথাগুলোর মানে এই নয় যে আমার এই এপ্লিকেশন সম্পূর্ণ নিরাপদ। Cyber World এ একটা কথা আছে \"No System is Safe\"। আমি শুধুমাত্র W3C এর আন্তর্জাতিক নিতীমালা অনুসরণ করে এই system বানানোর চেষ্টা করেছি। আর কারো জানার ইচ্ছা থাকলে তার সুভিদার জন্য এই পেইজে এমন system বানানোর সব দরকারি বিষয় সমূহের নাম মনোগ্রাম সম্বলিত করে দিয়ে রেখেছি।পাশাপাশি এই সিস্টেম এর জন্য ব্যবহার করা ৪টি প্রজেক্ট (React.js , Lumen,Flutter,C#.NET) এর source code আমি open source করে দিচ্ছি। রিয়েক্ট শেখানোর জন্য 'রাব্বিল হাসান রূপম ভাই' , ফ্রেমওয়ার্ক ভিত্তিক ডেভেলোপমেন্ট এর সাথে পরিচিত করানোর জন্য 'আল-আমিন স্যার' , প্রোগ্রামিং শেখাটা সহজ করে দেবার জন্য 'আন্তোনিন' এবং কম্পিউটার সাইন্স এর মতো এত অসাধারণ একটা ডিপার্টমেন্ট এ আমাকে আসার জন্য উৎসাহিত করায় 'মাহির ফয়সাল' কে বিশেষ ভাবে কৃতজ্ঞতা । ওয়েবসাইটের লিখিত তথ্য সম্পাদনা সহায়তায় তুর্জকে ধন্যবাদ।]"
+                                                                        :
+                                                                        "Ami English"
+                                                                    }
+                                                                </p>
+
                                                             </Card.Body>
                                                         </Card>
                                                     </Col>
@@ -511,20 +554,10 @@ class DeveloperFriendly extends Component {
                                             <Col lg={6} md={12} sm={12}>
                                                 <Card border="info" style={{  }}>
                                                     <Card.Body>
-                                                        <h5>Experties:</h5>
+                                                        <h5>Member's Application UI:</h5>
                                                         <ListGroup variant="flush">
-                                                            <ListGroup.Item>Computer Software Development</ListGroup.Item>
-                                                            <ListGroup.Item>Mobile Application Development</ListGroup.Item>
-                                                            <ListGroup.Item>Web Application Development</ListGroup.Item>
-                                                            <ListGroup.Item>Game Development</ListGroup.Item>
-                                                            <ListGroup.Item>AR,VR Games & Applications</ListGroup.Item>
-                                                            <ListGroup.Item>Voice Command Applications</ListGroup.Item>
-                                                            <ListGroup.Item>3D Modeling</ListGroup.Item>
-                                                            <ListGroup.Item>3D Animation</ListGroup.Item>
-                                                            <ListGroup.Item>CGI & VFX</ListGroup.Item>
-                                                            <ListGroup.Item>Video Post Production</ListGroup.Item>
-                                                            <ListGroup.Item>Graphics Design</ListGroup.Item>
-                                                            <ListGroup.Item>Photography</ListGroup.Item>
+                                                            <img className="centerImage"
+                                                                 src={uiGIF} height="400rem" />
                                                         </ListGroup>
                                                     </Card.Body>
                                                 </Card>

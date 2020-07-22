@@ -1,6 +1,6 @@
 class appURL{
 
-    static baseURL = 'http://localhost:8000';
+    static baseURL = 'https://www.office-rest.api.glitch-innovations.com';
 
     static pageTitle = this.baseURL +'/title';
     static services = this.baseURL +'/services';
