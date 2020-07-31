@@ -4,9 +4,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faAward,
     faBookReader, faBoxOpen, faBriefcase, faCompactDisc,
-    faEnvelope,
+    faEnvelope, faGenderless,
     faGraduationCap, faHeart, faHome, faLongArrowAltRight, faMale, faMars, faNetworkWired,
-    faPhoneVolume, faPlayCircle, faPrayingHands, faTint,
+    faPhoneVolume, faPlayCircle, faPrayingHands, faTint, faTransgender,
     faUniversity, faVenus
 } from "@fortawesome/free-solid-svg-icons";
 import {faUserGraduate} from "@fortawesome/free-solid-svg-icons";
@@ -33,6 +33,9 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 
 import restClient from "../../REST_API/restClient";
 import appURL from "../../REST_API/appURL";
+import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
+import BootstrapSwitchButton from "bootstrap-switch-button-react/lib/bootstrap-switch-button-react";
+import {faLinkedin} from "@fortawesome/free-brands-svg-icons/faLinkedin";
 
 
 class Profile extends Component {
@@ -40,6 +43,8 @@ class Profile extends Component {
     constructor(props) {
         super();
         this.state={
+            cvFocus:false,
+
             show:false,
 
             MasterID:props.id,
@@ -77,8 +82,19 @@ class Profile extends Component {
 
             Network:[],
         }
-
     }
+    onFocus() {
+        this.setState({
+            cvFocus: true
+        })
+    }
+
+    onBlur() {
+        this.setState({
+            cvFocus: false
+        })
+    }
+
     ModalColse=()=> this.setState({show:false});
     ModalOpen=()=> this.setState({show:true});
 
@@ -102,6 +118,7 @@ class Profile extends Component {
                 socialFB:result[0]['socialFB'],
                 socialTwit:result[0]['socialTwit'],
                 gitHub:result[0]['gitHub'],
+                linkedIN:result[0]['linkedIN'],
                 expSummary:result[0]['expSummary'],
             })
         }).catch(error=>{
@@ -336,10 +353,11 @@ class Profile extends Component {
         const url = this.state.url;
         const urls = url.map(url=> {
             return <span>
-                        <Button className='mr-2' href={url.url} variant="outline-secondary"> {url.buttonTitle} </Button>
+                        <Button className='mb-3 mr-3' href={url.url} variant="outline-secondary"> {url.buttonTitle} </Button>
                     </span>
         })
 
+        let screenWidth = window.innerWidth;
         return (
             <Fragment>
 
@@ -378,7 +396,9 @@ class Profile extends Component {
                                                             <br/>
 
                                                             {GenderInfo=="Male"?<FontAwesomeIcon icon={faMars} />
-                                                            :<FontAwesomeIcon icon={faVenus} />
+                                                            :GenderInfo=="Female"?<FontAwesomeIcon icon={faVenus} />
+                                                            :GenderInfo=="Transgender"?<FontAwesomeIcon icon={faTransgender} />
+                                                            :<FontAwesomeIcon icon={faGenderless} />
                                                             }<b>Gender:  </b>  <i> {this.state.gender} </i> <br/>
                                                             <FontAwesomeIcon icon={faPrayingHands} /> <b>Religion:  </b>  <i> {this.state.religion} </i> <br/>
                                                             <FontAwesomeIcon icon={faHeart} /> <b>Relationship:  </b>  <i> {this.state.relationship} </i> <br/>
@@ -440,7 +460,7 @@ class Profile extends Component {
                                             <Col lg={12} md={12} sm={12}>
                                                 <Card.Text>
                                                     <ListGroup variant="flush">
-                                                        <ListGroup.Item><FontAwesomeIcon icon={faTint} color="red" /> {this.state.blood} </ListGroup.Item>
+                                                        <ListGroup.Item><FontAwesomeIcon icon={faTint} color="red" /> {this.state.blood} <small className="text-secondary">(Blood Group)</small> </ListGroup.Item>
                                                         <ListGroup.Item><FontAwesomeIcon icon={faMobile} /> {this.state.contact} </ListGroup.Item>
                                                         <ListGroup.Item><FontAwesomeIcon icon={faEnvelopeSquare} /> {this.state.eMail} </ListGroup.Item>
                                                         <ListGroup.Item><FontAwesomeIcon icon={faMapMarkerAlt} /> {this.state.currentLoc} </ListGroup.Item>
@@ -520,25 +540,31 @@ class Profile extends Component {
                                         </Card.Header>
                                         <Accordion.Collapse eventKey="0">
                                             <Card.Body>
-                                                {urls}
+                                                <span onMouseEnter={() => this.onFocus()} onMouseLeave={() => this.onBlur()}>
+                                                    <Button className='mb-3 mr-3' href={this.state.linkedIN} variant="outline-secondary"> Linked <FontAwesomeIcon size="1.7x" color={this.state.cvFocus ? "#FFFFFF" : "#0077B5"} icon={faLinkedin} /> </Button>
+                                                </span>
+                                                 {urls}
                                             </Card.Body>
                                         </Accordion.Collapse>
                                     </Card>
                                 </Accordion>
                             </Col>
+                            <Col className={screenWidth <= 900 ? "text-center" : "text-left" } lg={3} md={12} sm={6}>
 
-                            <Col lg={3} md={3} sm={12}>
                                 <Row>
-                                    <Col lg={12} md={4} sm={4}>
+                                    <Col className lg={12} md={4} sm={4}>
                                         <br/>
                                         <Button href={this.state.socialFB} variant="primary"><FontAwesomeIcon icon={faFacebookF} /></Button>
-                                        <br/> <br/>
+                                        <br/>
+                                        <br/>
                                     </Col>
                                     <Col lg={12} md={4} sm={4}>
+                                        <br/>
                                         <Button href={this.state.socialTwit} variant="info"><FontAwesomeIcon icon={faTwitter} /></Button>
                                         <br/> <br/>
                                     </Col>
                                     <Col lg={12} md={4} sm={4}>
+                                        <br/>
                                         <Button href={this.state.gitHub} variant="dark"><FontAwesomeIcon icon={faGithub} /></Button>
                                         <br/> <br/>
                                     </Col>
@@ -565,16 +591,20 @@ class Profile extends Component {
                                         <blockquote className="blockquote mb-0">
                                             <Tabs defaultActiveKey="dash" id="uncontrolled-tab-example">
                                                 <Tab eventKey="home" title="Experience Summary">
+                                                    <br/>
                                                     {this.state.expSummary}
                                                 </Tab>
                                                 <Tab eventKey="profile" title="Project Experience">
+                                                    <br/>
                                                     {ProjExp}
                                                 </Tab>
                                                 <Tab eventKey="contact" title="Skills" >
+                                                    <br/>
                                                     {skills}
                                                 </Tab>
 
                                                 <Tab eventKey="soft&tool" title="Software & Tools" >
+                                                    <br/>
                                                     {softTools}
                                                 </Tab>
                                                 <Tab eventKey="dash" title="-o-" >
@@ -592,13 +622,16 @@ class Profile extends Component {
                                         <blockquote className="blockquote mb-0">
                                             <Tabs defaultActiveKey="dash" id="uncontrolled-tab-example">
                                                 <Tab eventKey="home" title="Training and Certifications">
+                                                    <br/>
                                                     {Certifications}
                                                 </Tab>
                                                 <Tab eventKey="profile" title="Awards & Recognitions">
+                                                    <br/>
                                                     {Awards}
                                                 </Tab>
                                                 <Tab eventKey="contact" title="Community Membership" >
                                                     <ListGroup style={{marginTop:"1rem"}} variant="flush">
+                                                        <br/>
                                                         {Members}
                                                     </ListGroup>
                                                 </Tab>

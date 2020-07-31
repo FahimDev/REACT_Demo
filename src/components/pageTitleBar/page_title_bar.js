@@ -2,6 +2,7 @@ import React, {Component,Fragment} from 'react';
 import {Container, Row, Col, Button} from "react-bootstrap";
 import GlitchClip from "react-glitch-effect/core/Clip";
 import Typewriter from 'typewriter-effect';
+
 class PageTitleBar extends Component {
 
     render() {

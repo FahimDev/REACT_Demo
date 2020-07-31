@@ -98,7 +98,7 @@
     color: #0f6674;
 }
 .TitlePage{
-    background-image: url("../img/DevCover.png");
+    background-image: url("../img/flyRetro.gif");/*DevCover.png*/
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -109,7 +109,7 @@
     position: absolute;
     min-height: 300px;
     width: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(43,49,63,0.4);
 }
 .TitlePageContent{
     color: white;
@@ -164,6 +164,10 @@
 }
 .textStyle{
     font-family: 'Raleway' , sans-serif;
+}
+.LoaderAnimation{
+    height: 200px;
+    width: 200px;
 }
 
 @media screen and (min-width: 360px) {

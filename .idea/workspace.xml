@@ -2,13 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="532e519c-6be0-4a16-85e2-e105441c370a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Loading/barLoader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Loading/loading.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Loading/network.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Loading/welcomeLoader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/REST_API/appURL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/REST_API/appURL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asset/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asset/img/DeveloperNeeds/tempUI.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/about/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/about/about.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/contact/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contact/contact.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/developer-friendly/developer-friendly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/developer-friendly/developer-friendly.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/member/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/member/member.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pageTitleBar/page_title_bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pageTitleBar/page_title_bar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/profile/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/research_project/researchProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/research_project/researchProject.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/services/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/services/services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/top_banner/top_banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/top_banner/top_banner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Contact/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Contact/Contact.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +45,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/about" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Loading" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -47,11 +57,12 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\src\components\Loading" />
+      <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\src\components\about" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\public" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\php7\xamp\XAMPP\htdocs\ReactTest\v1\src\components\about" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -127,6 +138,14 @@
       <workItem from="1594270551738" duration="3961000" />
       <workItem from="1595354708067" duration="4036000" />
       <workItem from="1595428235318" duration="11001000" />
+      <workItem from="1595474563989" duration="6887000" />
+      <workItem from="1595649705616" duration="12454000" />
+      <workItem from="1595688065505" duration="2522000" />
+      <workItem from="1595821676891" duration="1918000" />
+      <workItem from="1595992735910" duration="1544000" />
+      <workItem from="1596178463027" duration="67000" />
+      <workItem from="1596185216607" duration="1304000" />
+      <workItem from="1596197666471" duration="7183000" />
     </task>
     <servers />
   </component>
